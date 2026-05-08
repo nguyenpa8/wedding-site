@@ -1,9 +1,42 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { weddingData } from '../data/weddingData'
 
 export default function Guestbook() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, margin: '-100px' });
   const [name, setName] = useState('')
   const [message, setMessage] = useState('')
   const [wishes, setWishes] = useState([])
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: 'easeOut' },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' },
+    },
+  };
+
+  const staggerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
+      },
+    },
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -19,68 +52,85 @@ export default function Guestbook() {
   }
 
   return (
-    <section id="guestbook" className="py-16 px-4 bg-gradient-to-b from-pink-50 to-white">
-      <div className="max-w-2xl mx-auto">
-        <h2 className="text-4xl font-bold text-center text-pink-900 mb-12">Wedding Wishes</h2>
+    <section
+      id="guestbook"
+      ref={ref}
+      className="relative py-20 md:py-24 px-4 overflow-hidden"
+    >
+      <motion.div
+        className="max-w-3xl mx-auto"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? 'visible' : 'hidden'}
+      >
+        <motion.div className="mb-14 space-y-4" variants={itemVariants}>
+          <h2 className="text-5xl md:text-6xl font-serif font-bold text-center text-gray-900 tracking-tight">
+            Lời Chúc Hôn Nhân
+          </h2>
+          <div className="h-1 w-20 bg-gradient-to-r from-rose-400 to-rose-300 mx-auto rounded-full" />
+        </motion.div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-8 mb-12 border border-pink-100">
-          <div className="mb-6">
-            <label htmlFor="name" className="block text-sm font-semibold text-pink-900 mb-2">
-              Your Name
+        <motion.form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl p-10 mb-14 border border-rose-100" variants={itemVariants}>
+          <div className="mb-7">
+            <label htmlFor="name" className="block text-base font-semibold text-gray-900 mb-3" style={{ fontFamily: 'Montserrat, ui-sans-serif, system-ui, sans-serif' }}>
+              Tên Của Bạn
             </label>
             <input
               id="name"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Enter your name"
-              className="w-full px-4 py-2 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 text-gray-700"
+              placeholder="Nhập tên của bạn"
+              className="w-full px-5 py-3 border-2 border-rose-200 rounded-xl focus:outline-none focus:border-rose-400 focus:ring-0 text-gray-700 transition-colors duration-200"
             />
           </div>
 
-          <div className="mb-6">
-            <label htmlFor="message" className="block text-sm font-semibold text-pink-900 mb-2">
-              Your Wish
+          <div className="mb-7">
+            <label htmlFor="message" className="block text-base font-semibold text-gray-900 mb-3" style={{ fontFamily: 'Montserrat, ui-sans-serif, system-ui, sans-serif' }}>
+              Lời Chúc Của Bạn
             </label>
             <textarea
               id="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Share your wedding wishes..."
-              rows="4"
-              className="w-full px-4 py-2 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 text-gray-700 resize-none"
+              placeholder="Chia sẻ lời chúc hôn nhân của bạn..."
+              rows="5"
+              className="w-full px-5 py-3 border-2 border-rose-200 rounded-xl focus:outline-none focus:border-rose-400 focus:ring-0 text-gray-700 resize-none transition-colors duration-200"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 rounded-lg transition duration-200"
+            className="w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg"
+            style={{ fontFamily: 'Montserrat, ui-sans-serif, system-ui, sans-serif' }}
           >
-            Send Wish
+            Gửi Lời Chúc
           </button>
-        </form>
+        </motion.form>
 
         {/* Messages List */}
-        <div>
-          <h3 className="text-2xl font-semibold text-pink-900 mb-6">
+        <motion.div variants={itemVariants}>
+          <h3 className="text-2xl md:text-3xl font-serif font-bold text-gray-900 mb-8 tracking-tight">
             {wishes.length} {wishes.length === 1 ? 'Wish' : 'Wishes'}
           </h3>
 
           {wishes.length === 0 ? (
-            <p className="text-center text-gray-500 py-8">No wishes yet. Be the first to share!</p>
+            <p className="text-center text-gray-500 py-12 text-lg">
+              No wishes yet. Be the first to share!
+            </p>
           ) : (
-            <div className="space-y-4">
+            <motion.div className="space-y-6" variants={staggerVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
               {wishes.map((wish) => (
-                <div key={wish.id} className="bg-white rounded-lg shadow p-6 border-l-4 border-pink-300">
-                  <p className="font-semibold text-pink-900 mb-2">{wish.name}</p>
-                  <p className="text-gray-700 whitespace-pre-wrap">{wish.message}</p>
-                </div>
+                <motion.div key={wish.id} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-7 border-l-4 border-rose-400" variants={itemVariants}>
+                  <p className="font-serif font-bold text-rose-700 mb-3 text-lg">{wish.name}</p>
+                  <p className="text-gray-700 whitespace-pre-wrap font-light leading-relaxed">{wish.message}</p>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   )
 }

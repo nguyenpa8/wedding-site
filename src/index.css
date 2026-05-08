@@ -1,1 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Lora:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Noto+Serif:wght@400;500;600;700&display=swap&subset=vietnamese');
+
 @import "tailwindcss";
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply text-gray-800 bg-white;
+    font-family: 'Noto Serif', 'Lora', 'ui-serif', 'Georgia', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+    font-family: 'Noto Serif', 'Playfair Display', 'ui-serif', 'Georgia', sans-serif;
+  }
+
+  h1 {
+    @apply text-5xl md:text-6xl lg:text-7xl leading-tight;
+  }
+
+  h2 {
+    @apply text-4xl md:text-5xl leading-snug;
+  }
+
+  h3 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h4 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h5 {
+    @apply text-xl md:text-2xl;
+  }
+
+  h6 {
+    @apply text-lg md:text-xl;
+  }
+
+  p {
+    @apply leading-relaxed text-base;
+    font-family: 'Noto Serif', 'Lora', 'ui-serif', 'Georgia', serif;
+  }
+
+  a {
+    @apply text-rose-600 hover:text-rose-700 transition-colors duration-300;
+  }
+
+  button {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  section {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply text-4xl md:text-5xl font-serif font-bold text-center mb-12 text-gray-900;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-gray-600 text-center font-light tracking-wide;
+  }
+
+  .button-primary {
+    @apply px-8 py-3 bg-rose-600 text-white font-semibold rounded-md hover:bg-rose-700 shadow-md hover:shadow-lg transition-all duration-300;
+  }
+
+  .button-secondary {
+    @apply px-8 py-3 border-2 border-rose-600 text-rose-600 font-semibold rounded-md hover:bg-rose-50 transition-all duration-300;
+  }
+
+  .card-elegant {
+    @apply bg-white/50 backdrop-blur-sm rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-white/20 hover:bg-white/70;
+  }
+
+  .text-elegant {
+    @apply font-serif font-light tracking-wide text-gray-700;
+  }
+
+  .divider-soft {
+    @apply h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent;
+  }
+
+  /* Ambient glow decoration */
+  .glow-decoration {
+    @apply absolute rounded-full mix-blend-multiply filter blur-3xl opacity-20 pointer-events-none;
+  }
+
+  .glow-soft {
+    @apply absolute rounded-full mix-blend-multiply filter blur-2xl opacity-10 pointer-events-none;
+  }
+
+  /* Decorative accent lines */
+  .accent-line {
+    @apply h-1 w-16 bg-gradient-to-r from-rose-400 to-rose-300 rounded-full;
+  }
+
+  /* Enhanced section background */
+  .section-background {
+    @apply relative overflow-hidden;
+  }
+}
