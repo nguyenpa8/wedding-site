@@ -14,20 +14,20 @@ export const weddingData = {
 
   heroImage: heroImage,
 
-  youtubeEmbedUrl: "",
+  youtubeEmbedUrl: "https://www.youtube.com/embed/E7ZTDTRyvkI",
 
-  musicUrl: "/music/wedding.mp3",
+  musicUrl: "/music/wedding_music.mp3",
 
   locations: {
     groom: {
       title: "Nhà trai",
-      address: "",
+      address: "Thôn 2C, Xã An Nghĩa, Tỉnh Phú Thọ",
       mapLink: "",
     },
 
     bride: {
       title: "Nhà gái",
-      address: "",
+      address: "Thôn Nhân Lý, Xã Diên Hà, Tỉnh Hưng Yên",
       mapLink: "",
     },
   },
