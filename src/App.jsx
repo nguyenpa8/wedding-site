@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import SplashScreen from './components/SplashScreen'
+import FallingHearts from './components/FallingHearts'
 import Hero from './components/Hero'
 import CoupleIntroduction from './components/CoupleIntroduction'
 import Countdown from './components/Countdown'
@@ -25,6 +26,7 @@ function App() {
   return (
     <>
       {showSplash && <SplashScreen onOpen={handleOpen} />}
+      <FallingHearts />
       <Hero />
 
       <div
