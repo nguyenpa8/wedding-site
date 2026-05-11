@@ -9,7 +9,23 @@ export default function Guestbook() {
   const isInView = useInView(ref, { once: false, margin: '-100px' });
   const [name, setName] = useState('')
   const [message, setMessage] = useState('')
-  const [wishes, setWishes] = useState([])
+  const [wishes, setWishes] = useState([
+    {
+      id: 1,
+      name: 'Minh Anh',
+      message: 'Chúc hai bạn luôn đồng hành và vui vẻ với nhau trong mọi chặng đường phía trước nhé ❤️'
+    },
+    {
+      id: 2,
+      name: 'Hoàng Nam',
+      message: 'Chúc mừng hạnh phúc hai bạn. Mong rằng cuộc sống hôn nhân sẽ luôn đầy ắp tiếng cười và bình yên.'
+    },
+    {
+      id: 3,
+      name: 'Thu Trang',
+      message: 'Cuối cùng cũng đến ngày đặc biệt này rồi 😄 Chúc hai bạn mãi hạnh phúc và luôn yêu thương nhau.'
+    }
+  ])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null)
 
@@ -65,11 +81,6 @@ export default function Guestbook() {
           message: message.trim(),
         }),
       })
-
-      setWishes([
-        { id: Date.now(), name: name.trim(), message: message.trim() },
-        ...wishes
-      ])
       
       setName('')
       setMessage('')
@@ -172,24 +183,18 @@ export default function Guestbook() {
 
         {/* Messages List */}
         <motion.div variants={itemVariants}>
-          <h3 className="text-2xl md:text-3xl font-serif font-bold text-gray-900 mb-8 tracking-tight">
-            {wishes.length} {wishes.length === 1 ? 'Wish' : 'Wishes'}
-          </h3>
-
-          {wishes.length === 0 ? (
-            <p className="text-center text-gray-500 py-12 text-lg">
-              No wishes yet. Be the first to share!
-            </p>
-          ) : (
-            <motion.div className="space-y-6" variants={staggerVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
-              {wishes.map((wish) => (
-                <motion.div key={wish.id} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-7 border-l-4 border-rose-400" variants={itemVariants}>
-                  <p className="font-serif font-bold text-rose-700 mb-3 text-lg">{wish.name}</p>
-                  <p className="text-gray-700 whitespace-pre-wrap font-light leading-relaxed">{wish.message}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
+          <motion.div className="space-y-5" variants={staggerVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
+            {wishes.map((wish) => (
+              <motion.div 
+                key={wish.id} 
+                className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 border border-rose-100/50" 
+                variants={itemVariants}
+              >
+                <p className="font-serif text-rose-600 mb-4 text-xl">{wish.name}</p>
+                <p className="text-gray-700 whitespace-pre-wrap leading-relaxed text-base">{wish.message}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
       </motion.div>
     </section>
