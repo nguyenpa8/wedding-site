@@ -118,6 +118,14 @@ export default function CoupleIntroduction() {
             <span className="text-6xl lg:text-7xl text-rose-300 font-serif font-light">&</span>
           </motion.div>
 
+          {/* Mobile Ampersand */}
+          <motion.div
+            className="md:hidden flex justify-center my-4"
+            variants={itemVariants}
+          >
+            <span className="text-5xl text-rose-300 font-serif font-light">&</span>
+          </motion.div>
+
           {/* Bride Section */}
           <motion.div className="flex flex-col items-center text-center" variants={itemVariants}>
             {/* Bride Portrait */}
@@ -143,14 +151,6 @@ export default function CoupleIntroduction() {
             >
               {couple.bride}
             </motion.h2>
-          </motion.div>
-
-          {/* Mobile Ampersand */}
-          <motion.div
-            className="md:hidden flex justify-center my-4"
-            variants={itemVariants}
-          >
-            <span className="text-5xl text-rose-300 font-serif font-light">&</span>
           </motion.div>
         </motion.div>
 

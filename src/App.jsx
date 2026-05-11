@@ -5,7 +5,6 @@ import Hero from './components/Hero'
 import CoupleIntroduction from './components/CoupleIntroduction'
 import Countdown from './components/Countdown'
 import VideoSection from './components/VideoSection'
-import MusicPlayer from './components/MusicPlayer'
 import Gallery from './components/Gallery'
 import InfoLocation from './components/InfoLocation'
 import Guestbook from './components/Guestbook'
@@ -35,8 +34,6 @@ function App() {
         <Countdown />
 
         <VideoSection />
-
-        <MusicPlayer />
 
         <Gallery />
 
