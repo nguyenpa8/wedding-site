@@ -1,11 +1,17 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { weddingData } from '../data/weddingData.js'
+import Lightbox from 'yet-another-react-lightbox';
+import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
+import Zoom from 'yet-another-react-lightbox/plugins/zoom';
+import 'yet-another-react-lightbox/styles.css';
+import 'yet-another-react-lightbox/plugins/thumbnails.css';
+import './Gallery.css';
 
 export default function Gallery() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, margin: '-100px' });
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const containerVariants = {
@@ -37,25 +43,18 @@ export default function Gallery() {
     },
   };
 
+  const displayedImages = weddingData.gallery.slice(0, 9);
+
+  const slides = weddingData.gallery.map((src) => ({ src }));
+
   const handleImageClick = (index) => {
-    setSelectedImage(weddingData.gallery[index]);
     setCurrentIndex(index);
+    setLightboxOpen(true);
   };
 
-  const handleNext = () => {
-    const nextIndex = (currentIndex + 1) % weddingData.gallery.length;
-    setSelectedImage(weddingData.gallery[nextIndex]);
-    setCurrentIndex(nextIndex);
-  };
-
-  const handlePrev = () => {
-    const prevIndex = (currentIndex - 1 + weddingData.gallery.length) % weddingData.gallery.length;
-    setSelectedImage(weddingData.gallery[prevIndex]);
-    setCurrentIndex(prevIndex);
-  };
-
-  const handleClose = () => {
-    setSelectedImage(null);
+  const handleViewAll = () => {
+    setCurrentIndex(0);
+    setLightboxOpen(true);
   };
 
   return (
@@ -84,7 +83,7 @@ export default function Gallery() {
           animate={isInView ? 'visible' : 'hidden'}
         >
           {[0, 1, 2].map((col) => {
-            const colImages = weddingData.gallery.filter((_, i) => i % 3 === col)
+            const colImages = displayedImages.filter((_, i) => i % 3 === col)
             const offsets = [0, 44, 22]
             const aspectVariants = ['aspect-[3/4]', 'aspect-[2/3]', 'aspect-[3/4]', 'aspect-[4/5]', 'aspect-[3/4]', 'aspect-[2/3]']
             return (
@@ -131,7 +130,7 @@ export default function Gallery() {
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          {weddingData.gallery.map((image, index) => (
+          {displayedImages.map((image, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
@@ -150,70 +149,97 @@ export default function Gallery() {
           ))}
         </motion.div>
 
-        {/* Lightbox Modal */}
-        {selectedImage && (
-          <motion.div
-            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
-            onClick={handleClose}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+        {/* View All Button */}
+        <motion.div
+          className="flex justify-center mt-12"
+          variants={itemVariants}
+        >
+          <button
+            onClick={handleViewAll}
+            className="px-8 py-3 bg-gradient-to-r from-rose-400 to-rose-300 text-white font-medium rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
-            <motion.div
-              className="relative max-w-4xl max-h-[90vh] flex flex-col items-center"
-              onClick={(e) => e.stopPropagation()}
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-            >
-              {/* Close Button */}
-              <button
-                onClick={handleClose}
-                className="absolute -top-10 right-0 text-white hover:text-rose-400 transition-colors duration-300 z-10"
-                aria-label="Đóng"
-              >
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+            Xem Tất Cả Hình Ảnh
+          </button>
+        </motion.div>
 
-              {/* Image */}
-              <div className="relative w-full h-full max-h-[85vh] flex items-center justify-center">
-                <img
-                  src={selectedImage}
-                  alt="Ảnh cưới full"
-                  className="max-w-full max-h-full object-contain"
-                />
-              </div>
-
-              {/* Navigation Arrows */}
-              <button
-                onClick={handlePrev}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-rose-400 transition-colors duration-300 p-2"
-                aria-label="Ảnh trước"
-              >
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-
-              <button
-                onClick={handleNext}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-rose-400 transition-colors duration-300 p-2"
-                aria-label="Ảnh tiếp"
-              >
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-
-              {/* Image Counter */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm font-light">
-                {currentIndex + 1} / {weddingData.gallery.length}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
+        {/* Modern Lightbox */}
+        <Lightbox
+          open={lightboxOpen}
+          close={() => setLightboxOpen(false)}
+          slides={slides}
+          index={currentIndex}
+          plugins={[Thumbnails, Zoom]}
+          thumbnails={{
+            position: 'bottom',
+            width: 80,
+            height: 100,
+            border: 0,
+            borderRadius: 8,
+            padding: 0,
+            gap: 12,
+            showToggle: false,
+            vignette: false,
+            imageFit: 'cover',
+          }}
+          zoom={{
+            maxZoomPixelRatio: 3,
+            scrollToZoom: true,
+          }}
+          animation={{
+            fade: 250,
+            swipe: 0,
+            easing: {
+              fade: 'ease-in-out',
+              navigation: 'ease-in-out',
+            },
+          }}
+          carousel={{
+            finite: false,
+            preload: 2,
+            padding: 0,
+            spacing: 0,
+            imageFit: 'contain',
+          }}
+          controller={{
+            closeOnBackdropClick: true,
+            closeOnPullDown: true,
+            closeOnPullUp: true,
+          }}
+          styles={{
+            container: {
+              backgroundColor: 'rgba(0, 0, 0, 0.95)',
+            },
+            thumbnailsContainer: {
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              backdropFilter: 'blur(10px)',
+            },
+            thumbnail: {
+              border: '2px solid transparent',
+              transition: 'all 0.3s ease',
+            },
+            thumbnailActive: {
+              border: '2px solid rgb(251, 113, 133)',
+            },
+            navigationPrev: {
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              borderRadius: '50%',
+              width: '48px',
+              height: '48px',
+              transition: 'all 0.3s ease',
+            },
+            navigationNext: {
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              borderRadius: '50%',
+              width: '48px',
+              height: '48px',
+              transition: 'all 0.3s ease',
+            },
+          }}
+        />
       </motion.div>
     </section>
   )

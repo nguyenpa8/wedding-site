@@ -111,7 +111,7 @@ export default function Hero() {
 
         {/* Groom Name */}
         <motion.h2
-          className="text-lg sm:text-xl lg:text-2xl text-white/85 font-serif font-light tracking-elegance mb-3 sm:mb-4 lg:mb-5"
+          className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white font-serif font-bold tracking-tight mb-3 sm:mb-4 lg:mb-5 drop-shadow-xl"
           variants={itemVariants}
         >
           {couple.groom}
