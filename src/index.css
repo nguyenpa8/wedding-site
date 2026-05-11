@@ -1,6 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Lora:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Noto+Serif:wght@400;500;600;700&display=swap&subset=vietnamese');
-
 @import "tailwindcss";
+
+@theme {
+  --font-serif: 'Cormorant Garamond', 'Noto Serif', ui-serif, Georgia, serif;
+  --font-body: 'Be Vietnam Pro', 'Noto Serif', ui-sans-serif, system-ui, sans-serif;
+  --font-accent: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+}
 
 @layer base {
   html {
@@ -9,12 +13,12 @@
 
   body {
     @apply text-gray-800 bg-white;
-    font-family: 'Noto Serif', 'Lora', 'ui-serif', 'Georgia', sans-serif;
+    font-family: 'Be Vietnam Pro', 'Noto Serif', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold tracking-tight;
-    font-family: 'Noto Serif', 'Playfair Display', 'ui-serif', 'Georgia', sans-serif;
+    font-family: 'Cormorant Garamond', 'Noto Serif', serif;
   }
 
   h1 {
@@ -43,7 +47,7 @@
 
   p {
     @apply leading-relaxed text-base;
-    font-family: 'Noto Serif', 'Lora', 'ui-serif', 'Georgia', serif;
+    font-family: 'Be Vietnam Pro', 'Noto Serif', sans-serif;
   }
 
   a {

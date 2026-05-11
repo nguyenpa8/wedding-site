@@ -3,9 +3,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['Playfair Display', 'ui-serif', 'Georgia', 'serif'],
-        body: ['Lora', 'ui-serif', 'Georgia', 'serif'],
-        accent: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['Cormorant Garamond', 'Noto Serif', 'ui-serif', 'Georgia', 'serif'],
+        body: ['Be Vietnam Pro', 'Noto Serif', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        accent: ['Be Vietnam Pro', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         xs: ['0.75rem', { lineHeight: '1.5rem' }],
