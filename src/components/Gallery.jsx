@@ -76,21 +76,75 @@ export default function Gallery() {
           <div className="h-1 w-20 bg-gradient-to-r from-rose-400 to-rose-300 mx-auto rounded-full" />
         </motion.div>
 
-        <motion.div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6" variants={staggerVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
+        {/* 3-column portrait layout — desktop only, 2-col on mobile */}
+        <motion.div
+          className="hidden md:flex gap-5 items-start"
+          variants={staggerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+        >
+          {[0, 1, 2].map((col) => {
+            const colImages = weddingData.gallery.filter((_, i) => i % 3 === col)
+            const offsets = [0, 44, 22]
+            const aspectVariants = ['aspect-[3/4]', 'aspect-[2/3]', 'aspect-[3/4]', 'aspect-[4/5]', 'aspect-[3/4]', 'aspect-[2/3]']
+            return (
+              <div
+                key={col}
+                className="flex flex-col gap-5 flex-1"
+                style={{ marginTop: offsets[col] }}
+              >
+                {colImages.map((image, rowIdx) => {
+                  const globalIdx = rowIdx * 3 + col
+                  const aspect = aspectVariants[(rowIdx + col) % aspectVariants.length]
+                  return (
+                    <motion.div
+                      key={globalIdx}
+                      variants={itemVariants}
+                      className="group cursor-pointer overflow-hidden rounded-2xl transition-all duration-500"
+                      style={{
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                      }}
+                      onMouseEnter={e => e.currentTarget.style.boxShadow = '0 12px 40px rgba(0,0,0,0.15)'}
+                      onMouseLeave={e => e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)'}
+                      onClick={() => handleImageClick(globalIdx)}
+                    >
+                      <div className={`relative w-full ${aspect} overflow-hidden bg-gray-100`}>
+                        <img
+                          src={image}
+                          alt={`Ảnh cưới ${globalIdx + 1}`}
+                          className="w-full h-full object-cover object-top group-hover:scale-[1.04] transition-transform duration-700 ease-out"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </div>
+                    </motion.div>
+                  )
+                })}
+              </div>
+            )
+          })}
+        </motion.div>
+
+        {/* Mobile: 2-column portrait grid */}
+        <motion.div
+          className="md:hidden grid grid-cols-2 gap-3"
+          variants={staggerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+        >
           {weddingData.gallery.map((image, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-500 border border-gray-100"
+              className="group cursor-pointer overflow-hidden rounded-xl"
+              style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.08)', marginTop: index % 2 === 1 ? '16px' : '0' }}
               onClick={() => handleImageClick(index)}
             >
-              <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-200">
+              <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-100">
                 <img
                   src={image}
                   alt={`Ảnh cưới ${index + 1}`}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
               </div>
             </motion.div>
           ))}
