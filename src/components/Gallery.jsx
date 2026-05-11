@@ -71,7 +71,7 @@ export default function Gallery() {
       >
         <motion.div className="mb-16 space-y-4" variants={itemVariants}>
           <h2 className="text-5xl md:text-6xl font-serif font-bold text-center text-gray-900 tracking-tight">
-            Thư Viện Ảnh
+            Album Hình Cưới
           </h2>
           <div className="h-1 w-20 bg-gradient-to-r from-rose-400 to-rose-300 mx-auto rounded-full" />
         </motion.div>

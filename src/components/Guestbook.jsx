@@ -65,9 +65,12 @@ export default function Guestbook() {
       >
         <motion.div className="mb-14 space-y-4" variants={itemVariants}>
           <h2 className="text-5xl md:text-6xl font-serif font-bold text-center text-gray-900 tracking-tight">
-            Lời Chúc Hôn Nhân
+            Lời Chúc Từ Khách Mời
           </h2>
           <div className="h-1 w-20 bg-gradient-to-r from-rose-400 to-rose-300 mx-auto rounded-full" />
+          <p className="text-lg md:text-xl text-gray-600 font-light text-center max-w-2xl mx-auto pt-4">
+            Những lời chúc tốt đẹp từ những người thân yêu
+          </p>
         </motion.div>
 
         {/* Form */}

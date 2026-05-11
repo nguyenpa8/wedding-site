@@ -117,7 +117,7 @@ export default function Countdown() {
           <>
             <motion.div className="mb-14 sm:mb-16 space-y-3" variants={staggerVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
               <motion.h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-gray-900 tracking-tight" variants={itemVariants}>
-                Đếm Ngược
+                Countdown
               </motion.h2>
               <motion.div className="h-1 w-16 bg-gradient-to-r from-rose-400 to-rose-300 mx-auto rounded-full" variants={itemVariants} />
               <motion.p className="text-gray-600 text-base sm:text-lg tracking-wide font-light mt-4" variants={itemVariants}>

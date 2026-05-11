@@ -7,7 +7,7 @@ export default function CoupleIntroduction() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const { couple, family, introductionMessage } = weddingData;
+  const { couple, introductionMessage } = weddingData;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -71,17 +71,9 @@ export default function CoupleIntroduction() {
           </motion.h1>
 
           {/* Decorative Line */}
-          <motion.div className="mb-8 flex justify-center" variants={itemVariants}>
+          <motion.div className="flex justify-center" variants={itemVariants}>
             <div className="w-16 h-px bg-gradient-to-r from-transparent via-rose-400 to-transparent" />
           </motion.div>
-
-          {/* Introduction Message */}
-          <motion.p
-            className="text-lg md:text-xl text-gray-600 font-light leading-relaxed max-w-3xl mx-auto"
-            variants={itemVariants}
-          >
-            {introductionMessage}
-          </motion.p>
         </motion.div>
 
         {/* Couple Section */}
@@ -111,21 +103,11 @@ export default function CoupleIntroduction() {
 
             {/* Groom Name */}
             <motion.h2
-              className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4"
+              className="text-3xl md:text-4xl font-serif font-bold text-gray-900"
               variants={itemVariants}
             >
               {couple.groom}
             </motion.h2>
-
-            {/* Groom Family */}
-            <motion.div className="space-y-3 text-gray-600" variants={itemVariants}>
-              <p className="text-sm md:text-base font-light">
-                <span className="font-semibold">Bố:</span> {family.groom.father}
-              </p>
-              <p className="text-sm md:text-base font-light">
-                <span className="font-semibold">Mẹ:</span> {family.groom.mother}
-              </p>
-            </motion.div>
           </motion.div>
 
           {/* Ampersand Divider */}
@@ -156,21 +138,11 @@ export default function CoupleIntroduction() {
 
             {/* Bride Name */}
             <motion.h2
-              className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4"
+              className="text-3xl md:text-4xl font-serif font-bold text-gray-900"
               variants={itemVariants}
             >
               {couple.bride}
             </motion.h2>
-
-            {/* Bride Family */}
-            <motion.div className="space-y-3 text-gray-600" variants={itemVariants}>
-              <p className="text-sm md:text-base font-light">
-                <span className="font-semibold">Bố:</span> {family.bride.father}
-              </p>
-              <p className="text-sm md:text-base font-light">
-                <span className="font-semibold">Mẹ:</span> {family.bride.mother}
-              </p>
-            </motion.div>
           </motion.div>
 
           {/* Mobile Ampersand */}
@@ -180,6 +152,21 @@ export default function CoupleIntroduction() {
           >
             <span className="text-5xl text-rose-300 font-serif font-light">&</span>
           </motion.div>
+        </motion.div>
+
+        {/* Introduction Message */}
+        <motion.div
+          className="text-center mb-16 md:mb-20"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          <motion.p
+            className="text-lg md:text-xl text-gray-600 font-light leading-relaxed max-w-3xl mx-auto"
+            variants={itemVariants}
+          >
+            {introductionMessage}
+          </motion.p>
         </motion.div>
 
         {/* Bottom Decorative Line */}

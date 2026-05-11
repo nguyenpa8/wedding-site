@@ -41,7 +41,7 @@ export default function VideoSection() {
         {/* Section Header */}
         <motion.div className="mb-14 sm:mb-16 lg:mb-18 space-y-4" variants={itemVariants}>
           <h2 className="text-5xl md:text-6xl lg:text-7xl text-gray-900 font-serif font-bold tracking-tight text-center">
-            Câu Chuyện Của Chúng Tôi
+            Xem video cưới của chúng tôi!
           </h2>
           <div className="h-1 w-20 bg-gradient-to-r from-rose-400 to-rose-300 mx-auto rounded-full" />
         </motion.div>

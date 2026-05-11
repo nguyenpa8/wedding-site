@@ -20,8 +20,8 @@ import galleryImage17 from "../assets/gallery/glr17.jpg";
 import galleryImage18 from "../assets/gallery/glr18.jpg";
 import galleryImage19 from "../assets/gallery/glr19.jpg";
 import galleryImage20 from "../assets/gallery/glr20.jpg";
-import bridePortrait from "../assets/gallery/glr4.jpg";
-import groomPortrait from "../assets/gallery/glr5.jpg";
+import bridePortrait from "../assets/avatar/bride.jpg";
+import groomPortrait from "../assets/avatar/groom.jpg";
 
 export const weddingData = {
   couple: {
@@ -43,7 +43,7 @@ export const weddingData = {
   },
 
   introductionMessage:
-    "Chúng tôi vui vẻ mời bạn tham gia lễ cưới của chúng tôi. Hãy cùng chúng tôi bắt đầu hành trình tuyệt vời này, được bao quanh bởi tình yêu thương và sự ủng hộ của gia đình và bạn bè.",
+    "Thật vui vì được gặp và đón tiếp các bạn trong một dịp đặc biệt như đám cưới của chúng tôi. Chúng tôi muốn gửi đến bạn những lời cảm ơn sâu sắc nhất và để bạn biết chúng tôi rất hạnh phúc khi thấy bạn ở đó. Cảm ơn các bạn rất nhiều vì sự hiện diện cùng những lời chúc tốt đẹp mà bạn đã dành cho chúng tôi!",
 
   weddingDate: "2026-05-24",
 
