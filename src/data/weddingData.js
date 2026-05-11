@@ -33,12 +33,12 @@ export const weddingData = {
 
   family: {
     groom: {
-      father: "Anh [Father's Name]",
-      mother: "Nguyễn [Mother's Name]",
+      father: "Phạm Phúc Mạnh",
+      mother: "Trần Thị Khuyên",
     },
     bride: {
-      father: "[Father's Name]",
-      mother: "[Mother's Name]",
+      father: "Nguyễn Văn Thành",
+      mother: "Đỗ Thị Muôn",
     },
   },
 
@@ -57,13 +57,15 @@ export const weddingData = {
     groom: {
       title: "Nhà trai",
       address: "Thôn 2C, Xã An Nghĩa, Tỉnh Phú Thọ",
-      mapLink: "",
+      mapLink: "https://maps.app.goo.gl/y4fF58AZcjnEnQgT6",
+      time: "12:00",
     },
 
     bride: {
       title: "Nhà gái",
       address: "Thôn Nhân Lý, Xã Diên Hà, Tỉnh Hưng Yên",
-      mapLink: "",
+      mapLink: "https://www.google.com/maps/search/?api=1&query=20.623132705688477,106.2471923828125",
+      time: "07:00",
     },
   },
 

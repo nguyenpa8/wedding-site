@@ -111,3 +111,78 @@
     @apply relative overflow-hidden;
   }
 }
+
+/* ── Site-wide flowing background ─────────────────────────────── */
+.site-content {
+  position: relative;
+  background-color: #fffaf8;
+}
+
+/* Soft ambient blobs — fixed so they move as user scrolls */
+.site-content::before,
+.site-content::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(80px);
+}
+
+.site-content::before {
+  width: 55vw;
+  height: 55vw;
+  top: -10vw;
+  left: -15vw;
+  background: radial-gradient(circle, rgba(255, 182, 210, 0.22) 0%, transparent 70%);
+}
+
+.site-content::after {
+  width: 50vw;
+  height: 50vw;
+  bottom: 5vw;
+  right: -10vw;
+  background: radial-gradient(circle, rgba(255, 218, 185, 0.18) 0%, transparent 70%);
+}
+
+/* Ensure content sits above the blobs */
+.site-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Alternating section tones ─────────────────────────────────── */
+/* 1 - CoupleIntroduction: soft white */
+.site-content > section:nth-child(1) {
+  background: linear-gradient(180deg, #ffffff 0%, #fdf8f6 100%);
+}
+
+/* 2 - Countdown: blush pink */
+.site-content > section:nth-child(2) {
+  background: linear-gradient(180deg, #fce7f3 0%, #fdf2f8 60%, #fff8f6 100%);
+}
+
+/* 3 - VideoSection: near white / cream */
+.site-content > section:nth-child(3) {
+  background: linear-gradient(180deg, #fffbf7 0%, #ffffff 100%);
+}
+
+/* 4 - MusicPlayer: light blush */
+.site-content > section:nth-child(4) {
+  background: linear-gradient(180deg, #fff0f5 0%, #fdf6f0 100%);
+}
+
+/* 5 - Gallery: clean white so photos stand out */
+.site-content > section:nth-child(5) {
+  background: linear-gradient(180deg, #fdfaf8 0%, #ffffff 30%, #fdfaf8 100%);
+}
+
+/* 6 - InfoLocation: soft cream/beige */
+.site-content > section:nth-child(6) {
+  background: linear-gradient(180deg, #fdf6f0 0%, #fef9f5 100%);
+}
+
+/* 7 - Guestbook: gentle blush close */
+.site-content > section:nth-child(7) {
+  background: linear-gradient(180deg, #fff0f5 0%, #fce7f3 60%, #fdf2f8 100%);
+}
