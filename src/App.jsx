@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import SplashScreen from './components/SplashScreen'
 import Hero from './components/Hero'
 import CoupleIntroduction from './components/CoupleIntroduction'
 import Countdown from './components/Countdown'
@@ -11,8 +13,18 @@ import ImageDivider from './components/ImageDivider'
 import { weddingData } from './data/weddingData'
 
 function App() {
+  const [showSplash, setShowSplash] = useState(
+    () => !sessionStorage.getItem('wedding_opened')
+  )
+
+  function handleOpen() {
+    sessionStorage.setItem('wedding_opened', '1')
+    setShowSplash(false)
+  }
+
   return (
     <>
+      {showSplash && <SplashScreen onOpen={handleOpen} />}
       <Hero />
 
       <div
