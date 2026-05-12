@@ -47,18 +47,18 @@ export default function CoupleIntroduction() {
   return (
     <section
       ref={ref}
-      className="relative w-full py-20 md:py-28 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative w-full py-12 md:py-28 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Header Section */}
         <motion.div
-          className="text-center mb-16 md:mb-20"
+          className="text-center mb-8 md:mb-20"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           {/* Decorative Line */}
-          <motion.div className="mb-8 flex justify-center" variants={itemVariants}>
+          <motion.div className="mb-4 flex justify-center" variants={itemVariants}>
             <div className="w-12 h-px bg-gradient-to-r from-transparent via-rose-300 to-transparent" />
           </motion.div>
 
@@ -78,7 +78,7 @@ export default function CoupleIntroduction() {
 
         {/* Couple Section */}
         <motion.div
-          className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 lg:gap-16 mb-16 md:mb-20"
+          className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 lg:gap-16 mb-8 md:mb-20"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -87,7 +87,7 @@ export default function CoupleIntroduction() {
           <motion.div className="flex flex-col items-center text-center" variants={itemVariants}>
             {/* Groom Portrait */}
             <motion.div
-              className="mb-8 w-full max-w-xs"
+              className="mb-4 w-full max-w-xs"
               variants={imageVariants}
             >
               <div className="relative overflow-hidden rounded-3xl shadow-2xl aspect-[3/4]">
@@ -120,7 +120,7 @@ export default function CoupleIntroduction() {
 
           {/* Mobile Ampersand */}
           <motion.div
-            className="md:hidden flex justify-center my-4"
+            className="md:hidden flex justify-center my-1"
             variants={itemVariants}
           >
             <span className="text-5xl text-rose-300 font-serif font-light">&</span>
@@ -130,7 +130,7 @@ export default function CoupleIntroduction() {
           <motion.div className="flex flex-col items-center text-center" variants={itemVariants}>
             {/* Bride Portrait */}
             <motion.div
-              className="mb-8 w-full max-w-xs"
+              className="mb-4 w-full max-w-xs"
               variants={imageVariants}
             >
               <div className="relative overflow-hidden rounded-3xl shadow-2xl aspect-[3/4]">
@@ -156,7 +156,7 @@ export default function CoupleIntroduction() {
 
         {/* Introduction Message */}
         <motion.div
-          className="text-center mb-16 md:mb-20"
+          className="text-center mb-8 md:mb-20"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}

@@ -96,7 +96,7 @@ export default function Countdown() {
   return (
     <section
       ref={ref}
-      className="relative flex items-center justify-center min-h-screen px-4 py-16 overflow-hidden"
+      className="relative flex items-center justify-center md:min-h-screen px-4 py-10 md:py-16 overflow-hidden"
     >
       <motion.div
         className="text-center max-w-3xl"
@@ -115,7 +115,7 @@ export default function Countdown() {
           </motion.div>
         ) : (
           <>
-            <motion.div className="mb-14 sm:mb-16 space-y-3" variants={staggerVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
+            <motion.div className="mb-8 sm:mb-16 space-y-3" variants={staggerVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
               <motion.h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-gray-900 tracking-tight" variants={itemVariants}>
                 Countdown
               </motion.h2>

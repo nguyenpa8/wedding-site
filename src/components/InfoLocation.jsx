@@ -44,7 +44,7 @@ export default function InfoLocation() {
   return (
     <section
       ref={ref}
-      className="relative py-20 md:py-24 px-4 overflow-hidden"
+      className="relative py-12 md:py-24 px-4 overflow-hidden"
     >
       <motion.div
         className="max-w-7xl mx-auto"
@@ -52,7 +52,7 @@ export default function InfoLocation() {
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
       >
-        <motion.div className="mb-16 space-y-4" variants={itemVariants}>
+        <motion.div className="mb-8 md:mb-16 space-y-4" variants={itemVariants}>
           <h2 className="text-5xl md:text-6xl font-serif font-bold text-center text-gray-900 tracking-tight">
             Địa Điểm
           </h2>

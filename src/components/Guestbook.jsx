@@ -99,7 +99,7 @@ export default function Guestbook() {
     <section
       id="guestbook"
       ref={ref}
-      className="relative py-20 md:py-24 px-4 overflow-hidden"
+      className="relative py-12 md:py-24 px-4 overflow-hidden"
     >
       <motion.div
         className="max-w-3xl mx-auto"
@@ -107,7 +107,7 @@ export default function Guestbook() {
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
       >
-        <motion.div className="mb-14 space-y-4" variants={itemVariants}>
+        <motion.div className="mb-8 md:mb-14 space-y-4" variants={itemVariants}>
           <h2 className="text-5xl md:text-6xl font-serif font-bold text-center text-gray-900 tracking-tight">
             Lời Chúc Từ Khách Mời
           </h2>
@@ -118,7 +118,7 @@ export default function Guestbook() {
         </motion.div>
 
         {/* Form */}
-        <motion.form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl p-10 mb-14 border border-rose-100" variants={itemVariants}>
+        <motion.form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl p-10 mb-8 md:mb-14 border border-rose-100" variants={itemVariants}>
           <div className="mb-7">
             <label htmlFor="name" className="block text-base font-semibold text-gray-900 mb-3" style={{ fontFamily: 'Montserrat, ui-sans-serif, system-ui, sans-serif' }}>
               Tên Của Bạn
