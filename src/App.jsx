@@ -8,6 +8,7 @@ import VideoSection from './components/VideoSection'
 import Gallery from './components/Gallery'
 import InfoLocation from './components/InfoLocation'
 import Guestbook from './components/Guestbook'
+import Footer from './components/Footer'
 
 function App() {
   const [showSplash, setShowSplash] = useState(
@@ -38,6 +39,8 @@ function App() {
 
         <Guestbook />
       </div>
+
+      <Footer />
     </>
   )
 }

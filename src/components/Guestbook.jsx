@@ -141,7 +141,7 @@ export default function Guestbook() {
               id="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Chia sẻ lời chúc hôn nhân của bạn..."
+              placeholder="Chia sẻ lời chúc của bạn..."
               rows="5"
               className="w-full px-5 py-3 border-2 border-rose-200 rounded-xl focus:outline-none focus:border-rose-400 focus:ring-0 text-gray-700 resize-none transition-colors duration-200"
             />
