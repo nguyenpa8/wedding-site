@@ -43,7 +43,8 @@ export default function Gallery() {
     },
   };
 
-  const displayedImages = weddingData.gallery.slice(0, 9);
+  const desktopImages = weddingData.gallery.slice(0, 9);
+  const mobileImages = weddingData.gallery.slice(0, 10);
 
   const slides = weddingData.gallery.map((src) => ({ src }));
 
@@ -83,7 +84,7 @@ export default function Gallery() {
           animate={isInView ? 'visible' : 'hidden'}
         >
           {[0, 1, 2].map((col) => {
-            const colImages = displayedImages.filter((_, i) => i % 3 === col)
+            const colImages = desktopImages.filter((_, i) => i % 3 === col)
             const offsets = [0, 44, 22]
             const aspectVariants = ['aspect-[3/4]', 'aspect-[2/3]', 'aspect-[3/4]', 'aspect-[4/5]', 'aspect-[3/4]', 'aspect-[2/3]']
             return (
@@ -130,12 +131,12 @@ export default function Gallery() {
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          {displayedImages.map((image, index) => (
+          {mobileImages.map((image, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
               className="group cursor-pointer overflow-hidden rounded-xl"
-              style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.08)', marginTop: index % 2 === 1 ? '16px' : '0' }}
+              style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.08)' }}
               onClick={() => handleImageClick(index)}
             >
               <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-100">
