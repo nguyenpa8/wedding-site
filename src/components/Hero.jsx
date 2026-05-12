@@ -47,41 +47,30 @@ export default function Hero() {
   };
 
   const scrollIndicatorVariants = {
-    hidden: { opacity: 0, y: -10 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
         delay: 2,
         duration: 0.8,
         ease: "easeOut",
       },
     },
-    animate: {
-      y: [0, 8, 0],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    },
   };
 
   return (
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Zoom Effect */}
+      {/* Background Image with subtle one-shot zoom */}
       <motion.div
         className="absolute inset-0 bg-cover bg-no-repeat bg-[position:82%_center] md:bg-center"
         style={{
           backgroundImage: `url(${heroImage})`,
         }}
-        initial={{ scale: 1 }}
-        animate={{ scale: 1.05 }}
+        initial={{ scale: 1.05 }}
+        animate={{ scale: 1 }}
         transition={{
-          duration: 20,
-          ease: "easeInOut",
-          repeat: Infinity,
-          repeatType: "reverse",
+          duration: 8,
+          ease: "easeOut",
         }}
       />
 
@@ -93,9 +82,7 @@ export default function Hero() {
         backgroundImage: 'radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%)',
       }} />
 
-      {/* Subtle Decorative Blurred Shapes */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-rose-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 translate-x-1/3 translate-y-1/3" />
+      {/* Decorative blur shapes removed for performance */}
 
       {/* Content Container */}
       <motion.div
@@ -147,13 +134,13 @@ export default function Hero() {
 
         {/* Scroll Indicator */}
         <motion.div
-          className="absolute bottom-8 sm:bottom-10 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2"
           variants={scrollIndicatorVariants}
           initial="hidden"
-          animate={["visible", "animate"]}
+          animate="visible"
         >
           <svg
-            className="w-5 h-5 sm:w-6 sm:h-6 text-white/50 hover:text-white/75 transition-colors duration-300"
+            className="w-5 h-5 sm:w-6 sm:h-6 text-white/50 hover:text-white/75 transition-colors duration-300 animate-bounce"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"

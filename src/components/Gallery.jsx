@@ -10,7 +10,7 @@ import './Gallery.css';
 
 export default function Gallery() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 

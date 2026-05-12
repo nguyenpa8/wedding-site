@@ -9,11 +9,13 @@
 @layer base {
   html {
     @apply scroll-smooth;
+    -webkit-overflow-scrolling: touch;
   }
 
   body {
     @apply text-gray-800 bg-white;
     font-family: 'Be Vietnam Pro', 'Noto Serif', sans-serif;
+    overscroll-behavior-y: none;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -126,7 +128,10 @@
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
-  filter: blur(80px);
+  /* Reduced blur for perf; transform3d promotes to own compositor layer */
+  filter: blur(48px);
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 .site-content::before {
@@ -134,7 +139,7 @@
   height: 55vw;
   top: -10vw;
   left: -15vw;
-  background: radial-gradient(circle, rgba(255, 182, 210, 0.22) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 182, 210, 0.20) 0%, transparent 70%);
 }
 
 .site-content::after {
@@ -142,13 +147,19 @@
   height: 50vw;
   bottom: 5vw;
   right: -10vw;
-  background: radial-gradient(circle, rgba(255, 218, 185, 0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 218, 185, 0.16) 0%, transparent 70%);
 }
 
 /* Ensure content sits above the blobs */
 .site-content > * {
   position: relative;
   z-index: 1;
+}
+
+/* Skip rendering off-screen sections — major scroll perf win */
+.site-content > section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
 }
 
 /* ── Alternating section tones ─────────────────────────────────── */

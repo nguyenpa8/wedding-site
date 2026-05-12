@@ -62,7 +62,7 @@ export default function Countdown() {
   );
 
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const containerVariants = {
     hidden: { opacity: 0, y: 40 },
@@ -125,7 +125,7 @@ export default function Countdown() {
               </motion.p>
             </motion.div>
 
-            <motion.div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-8 sm:p-10 md:p-14 border border-white/20" variants={itemVariants}>
+            <motion.div className="bg-white rounded-3xl shadow-xl p-8 sm:p-10 md:p-14 border border-gray-100" variants={itemVariants}>
               <motion.div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-10" variants={staggerVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
                 <motion.div variants={itemVariants}><TimeUnit value={timeRemaining.days} label="Ngày" /></motion.div>
                 <motion.div variants={itemVariants}><TimeUnit value={timeRemaining.hours} label="Giờ" /></motion.div>

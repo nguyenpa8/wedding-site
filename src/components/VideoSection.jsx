@@ -5,7 +5,7 @@ import { weddingData } from "../data/weddingData";
 export default function VideoSection() {
   const sectionRef = useRef(null);
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: false, margin: '-100px' });
+  const isInView = useInView(containerRef, { once: true, margin: '-100px' });
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   const containerVariants = {

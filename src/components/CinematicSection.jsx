@@ -1,22 +1,12 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 
 const CinematicSection = ({
   image,
   height = "min-h-[400px] md:min-h-[500px] lg:min-h-[600px]",
   overlay = "from-black/40 via-black/30 to-black/40",
-  parallax = true,
   children,
   className = "",
 }) => {
-  const [isDesktop, setIsDesktop] = useState(true);
-
-  useEffect(() => {
-    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
-    checkDesktop();
-    window.addEventListener("resize", checkDesktop);
-    return () => window.removeEventListener("resize", checkDesktop);
-  }, []);
 
   return (
     <section
@@ -29,12 +19,7 @@ const CinematicSection = ({
       }}
     >
       {/* Dark Overlay for Readability */}
-      <div
-        className={`absolute inset-0 bg-gradient-to-b ${overlay}`}
-        style={{
-          backdropFilter: "blur(2px)",
-        }}
-      />
+      <div className={`absolute inset-0 bg-gradient-to-b ${overlay}`} />
 
       {/* Soft Vignette Effect */}
       <div

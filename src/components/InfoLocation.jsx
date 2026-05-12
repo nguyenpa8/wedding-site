@@ -4,7 +4,7 @@ import { weddingData } from '../data/weddingData.js';
 
 export default function InfoLocation() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const containerVariants = {
     hidden: { opacity: 0, y: 40 },
@@ -64,7 +64,7 @@ export default function InfoLocation() {
 
         <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-10" variants={staggerVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
           {/* Groom's House Card */}
-          <motion.div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-10 border border-gray-100 group" variants={itemVariants}>
+          <motion.div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 p-10 border border-gray-100 group" variants={itemVariants}>
             <h3 className="text-3xl md:text-4xl font-serif font-bold text-rose-600 mb-6 group-hover:text-rose-700 transition-colors">
               {weddingData.locations.groom.title}
             </h3>
@@ -89,7 +89,7 @@ export default function InfoLocation() {
           </motion.div>
 
           {/* Bride's House Card */}
-          <motion.div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-10 border border-gray-100 group" variants={itemVariants}>
+          <motion.div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 p-10 border border-gray-100 group" variants={itemVariants}>
             <h3 className="text-3xl md:text-4xl font-serif font-bold text-rose-600 mb-6 group-hover:text-rose-700 transition-colors">
               {weddingData.locations.bride.title}
             </h3>

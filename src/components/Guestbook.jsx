@@ -6,7 +6,7 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwRoRq5L3IwBu
 
 export default function Guestbook() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [name, setName] = useState('')
   const [message, setMessage] = useState('')
   const [wishes, setWishes] = useState([
@@ -187,7 +187,7 @@ export default function Guestbook() {
             {wishes.map((wish) => (
               <motion.div 
                 key={wish.id} 
-                className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 border border-rose-100/50" 
+                className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 p-8 border border-rose-100/50" 
                 variants={itemVariants}
               >
                 <p className="font-serif text-rose-600 mb-4 text-xl">{wish.name}</p>

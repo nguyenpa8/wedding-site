@@ -3,18 +3,13 @@ import { useEffect, useRef } from 'react'
 const HEART_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`
 
 const hearts = [
-  { left: 5,  delay: 0,    duration: 14, size: 10, opacity: 0.55, drift: 18 },
-  { left: 12, delay: 1.5,  duration: 18, size: 8,  opacity: 0.50, drift: -14 },
-  { left: 22, delay: 0.5,  duration: 16, size: 12, opacity: 0.60, drift: 20 },
-  { left: 33, delay: 2,    duration: 20, size: 7,  opacity: 0.45, drift: -10 },
-  { left: 44, delay: 0.8,  duration: 15, size: 11, opacity: 0.55, drift: 16 },
-  { left: 55, delay: 3,    duration: 19, size: 9,  opacity: 0.50, drift: -18 },
-  { left: 63, delay: 0.3,  duration: 17, size: 13, opacity: 0.48, drift: 12 },
-  { left: 72, delay: 1.8,  duration: 14, size: 8,  opacity: 0.55, drift: -20 },
-  { left: 80, delay: 2.5,  duration: 21, size: 10, opacity: 0.45, drift: 14 },
-  { left: 90, delay: 1.0,  duration: 16, size: 12, opacity: 0.52, drift: -12 },
-  { left: 8,  delay: 3.5,  duration: 18, size: 9,  opacity: 0.48, drift: 22 },
-  { left: 50, delay: 2.2,  duration: 22, size: 7,  opacity: 0.45, drift: -8 },
+  { left: 8,  delay: 0,    duration: 16, size: 10, opacity: 0.50, drift: 18 },
+  { left: 22, delay: 1.5,  duration: 20, size: 12, opacity: 0.55, drift: -14 },
+  { left: 38, delay: 0.8,  duration: 18, size: 8,  opacity: 0.45, drift: 16 },
+  { left: 55, delay: 2.5,  duration: 22, size: 11, opacity: 0.50, drift: -18 },
+  { left: 68, delay: 1.2,  duration: 17, size: 9,  opacity: 0.48, drift: 12 },
+  { left: 82, delay: 3.0,  duration: 21, size: 13, opacity: 0.45, drift: -12 },
+  { left: 47, delay: 2.0,  duration: 19, size: 7,  opacity: 0.42, drift: 10 },
 ]
 
 export default function FallingHearts() {
@@ -49,6 +44,7 @@ export default function FallingHearts() {
         zIndex: 10,
         pointerEvents: 'none',
         overflow: 'hidden',
+        contain: 'strict',
       }}
     >
       {hearts.map((h, i) => (
@@ -62,7 +58,7 @@ export default function FallingHearts() {
             height: `${h.size}px`,
             '--drift': `${h.drift}px`,
             animation: `heartFall ${h.duration}s ${h.delay}s ease-in-out infinite`,
-            willChange: 'transform, opacity',
+            contain: 'layout style',
           }}
         >
           <svg
