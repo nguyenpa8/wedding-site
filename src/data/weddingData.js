@@ -1,5 +1,5 @@
 
-import heroImage from "../assets/hero/hero.jpg";
+import heroImage from "../assets/hero/hero.webp";
 import galleryImage1 from "../assets/gallery/glr1.webp";
 import galleryImage2 from "../assets/gallery/glr2.webp";
 import galleryImage3 from "../assets/gallery/glr3.webp";
@@ -20,8 +20,8 @@ import galleryImage17 from "../assets/gallery/glr17.webp";
 import galleryImage18 from "../assets/gallery/glr18.webp";
 import galleryImage19 from "../assets/gallery/glr19.webp";
 import galleryImage20 from "../assets/gallery/glr20.webp";
-import bridePortrait from "../assets/avatar/bride.jpg";
-import groomPortrait from "../assets/avatar/groom.jpg";
+import bridePortrait from "../assets/avatar/bride.webp";
+import groomPortrait from "../assets/avatar/groom.webp";
 
 export const weddingData = {
   couple: {
