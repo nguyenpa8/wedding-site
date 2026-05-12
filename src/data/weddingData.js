@@ -63,7 +63,7 @@ export const weddingData = {
 
     bride: {
       title: "Nhà gái",
-      address: "Thôn Nhân Lý, Xã Diên Hà, Tỉnh Hưng Yên",
+      address: "Thôn Nhân Phú, Xã Diên Hà, Tỉnh Hưng Yên",
       mapLink: "https://www.google.com/maps/search/?api=1&query=20.623132705688477,106.2471923828125",
       time: "07:00",
     },
