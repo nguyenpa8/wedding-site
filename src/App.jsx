@@ -8,9 +8,6 @@ import VideoSection from './components/VideoSection'
 import Gallery from './components/Gallery'
 import InfoLocation from './components/InfoLocation'
 import Guestbook from './components/Guestbook'
-import CinematicSection from './components/CinematicSection'
-import ImageDivider from './components/ImageDivider'
-import { weddingData } from './data/weddingData'
 
 function App() {
   const [showSplash, setShowSplash] = useState(

@@ -71,7 +71,7 @@ export default function Hero() {
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Zoom Effect */}
       <motion.div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-no-repeat bg-[position:82%_center] md:bg-center"
         style={{
           backgroundImage: `url(${heroImage})`,
         }}
