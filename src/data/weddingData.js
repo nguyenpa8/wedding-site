@@ -59,6 +59,10 @@ export const weddingData = {
       address: "Thôn 2C, Xã An Nghĩa, Tỉnh Phú Thọ",
       mapLink: "https://maps.app.goo.gl/y4fF58AZcjnEnQgT6",
       time: "12:00",
+      schedule: [
+        { time: "12:00", label: "Bắt đầu buổi lễ" },
+        { time: "12:30", label: "Khai tiệc" },
+      ],
     },
 
     bride: {
@@ -66,6 +70,10 @@ export const weddingData = {
       address: "Thôn Nhân Phú, Xã Diên Hà, Tỉnh Hưng Yên",
       mapLink: "https://www.google.com/maps/search/?api=1&query=20.623132705688477,106.2471923828125",
       time: "07:00",
+      schedule: [
+        { time: "07:00", label: "Khai tiệc" },
+        { time: "09:30", label: "Bắt đầu buổi lễ" },
+      ],
     },
   },
 

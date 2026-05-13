@@ -63,55 +63,70 @@ export default function InfoLocation() {
         </motion.div>
 
         <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-10" variants={staggerVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
-          {/* Groom's House Card */}
-          <motion.div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 p-10 border border-gray-100 group" variants={itemVariants}>
-            <h3 className="text-3xl md:text-4xl font-serif font-bold text-rose-600 mb-6 group-hover:text-rose-700 transition-colors">
-              {weddingData.locations.groom.title}
-            </h3>
-            <div className="flex items-center gap-2 text-rose-500 font-semibold text-xl mb-3">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              {weddingData.locations.groom.time}
-            </div>
-            <p className="text-gray-700 text-lg leading-relaxed mb-8 font-light">
-              {weddingData.locations.groom.address}
-            </p>
-            <button
-              onClick={() => handleOpenMaps(weddingData.locations.groom.mapLink)}
-              disabled={!weddingData.locations.groom.mapLink}
-              className={`w-full py-4 px-6 rounded-xl font-semibold transition-all duration-300 transform ${
-                weddingData.locations.groom.mapLink
-                  ? 'bg-rose-600 text-white hover:bg-rose-700 hover:shadow-lg cursor-pointer'
-                  : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-              }`}
+          {[weddingData.locations.bride, weddingData.locations.groom].map((loc) => (
+            <motion.div
+              key={loc.title}
+              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 p-8 md:p-10 border border-gray-100 group flex flex-col"
+              variants={itemVariants}
             >
-              Open in Google Maps
-            </button>
-          </motion.div>
+              {/* Card Title */}
+              <h3 className="text-3xl md:text-4xl font-serif font-bold text-rose-600 mb-5 group-hover:text-rose-700 transition-colors">
+                {loc.title}
+              </h3>
 
-          {/* Bride's House Card */}
-          <motion.div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 p-10 border border-gray-100 group" variants={itemVariants}>
-            <h3 className="text-3xl md:text-4xl font-serif font-bold text-rose-600 mb-6 group-hover:text-rose-700 transition-colors">
-              {weddingData.locations.bride.title}
-            </h3>
-            <div className="flex items-center gap-2 text-rose-500 font-semibold text-xl mb-3">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              {weddingData.locations.bride.time}
-            </div>
-            <p className="text-gray-700 text-lg leading-relaxed mb-8 font-light">
-              {weddingData.locations.bride.address}
-            </p>
-            <button
-              onClick={() => handleOpenMaps(weddingData.locations.bride.mapLink)}
-              disabled={!weddingData.locations.bride.mapLink}
-              className={`w-full py-4 px-6 rounded-xl font-semibold transition-all duration-300 transform ${
-                weddingData.locations.bride.mapLink
-                  ? 'bg-rose-600 text-white hover:bg-rose-700 hover:shadow-lg cursor-pointer'
-                  : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-              }`}
-            >
-              Open in Google Maps
-            </button>
-          </motion.div>
+              {/* Address */}
+              <div className="flex items-start gap-2 text-gray-500 mb-7">
+                <svg className="w-4 h-4 mt-0.5 shrink-0 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <p className="text-base leading-relaxed font-light">{loc.address}</p>
+              </div>
+
+              {/* Mini Timeline */}
+              {loc.schedule && loc.schedule.length > 0 && (
+                <div className="mb-8">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-rose-400 mb-4">Lịch trình</p>
+                  <div className="relative">
+                    {/* Vertical line */}
+                    <div className="absolute left-[19px] top-2 bottom-2 w-px bg-rose-100" />
+                    <div className="space-y-4">
+                      {loc.schedule.map((item, idx) => (
+                        <div key={idx} className="flex items-center gap-4">
+                          {/* Dot */}
+                          <div className="relative shrink-0 w-10 h-10 rounded-full bg-rose-50 border-2 border-rose-200 flex items-center justify-center z-10">
+                            <svg className="w-4 h-4 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          </div>
+                          {/* Content */}
+                          <div className="flex items-baseline gap-3">
+                            <span className="text-lg font-bold text-rose-600 font-serif tabular-nums">{item.time}</span>
+                            <span className="text-base text-gray-600 font-light">{item.label}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Maps Button */}
+              <div className="mt-auto">
+                <button
+                  onClick={() => handleOpenMaps(loc.mapLink)}
+                  disabled={!loc.mapLink}
+                  className={`w-full py-4 px-6 rounded-xl font-semibold transition-shadow duration-300 ${
+                    loc.mapLink
+                      ? 'bg-rose-600 text-white hover:bg-rose-700 hover:shadow-lg cursor-pointer'
+                      : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  }`}
+                >
+                  Open in Google Maps
+                </button>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </motion.div>
     </section>
