@@ -71,9 +71,9 @@ export const weddingData = {
 
   gallery: [
     galleryImage1, galleryImage12, galleryImage4, galleryImage2,
-    galleryImage5, galleryImage6, galleryImage7, galleryImage8,
-    galleryImage17, galleryImage20, galleryImage3, galleryImage9,
+    galleryImage6, galleryImage7, galleryImage8, galleryImage20,
+    galleryImage17, galleryImage19, galleryImage3, galleryImage9,
     galleryImage10, galleryImage11, galleryImage13, galleryImage14,
-    galleryImage15, galleryImage16, galleryImage18, galleryImage19,
+    galleryImage15, galleryImage16, galleryImage18, galleryImage5,
   ],
 };
