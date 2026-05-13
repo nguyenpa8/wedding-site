@@ -70,10 +70,10 @@ export const weddingData = {
   },
 
   gallery: [
-    galleryImage1, galleryImage2, galleryImage3, galleryImage4,
+    galleryImage1, galleryImage12, galleryImage3, galleryImage2,
     galleryImage5, galleryImage6, galleryImage7, galleryImage8,
-    galleryImage9, galleryImage10, galleryImage11, galleryImage12,
-    galleryImage13, galleryImage14, galleryImage15, galleryImage16,
-    galleryImage17, galleryImage18, galleryImage19, galleryImage20,
+    galleryImage17, galleryImage20, galleryImage4, galleryImage9,
+    galleryImage10, galleryImage11, galleryImage13, galleryImage14,
+    galleryImage15, galleryImage16, galleryImage18, galleryImage19,
   ],
 };
