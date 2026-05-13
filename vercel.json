@@ -1,11 +1,51 @@
 {
+  "rewrites": [
+    {
+      "source": "/((?!share\\.html$).*)",
+      "destination": "/index.html"
+    }
+  ],
   "headers": [
+    {
+      "source": "/(index|share)\\.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Accept-Ranges",
+          "value": "none"
+        },
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/share",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Accept-Ranges",
+          "value": "none"
+        },
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        }
+      ]
+    },
     {
       "source": "/(.*)",
       "headers": [
         {
-          "key": "Accept-Ranges",
-          "value": "none"
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
         }
       ]
     }
